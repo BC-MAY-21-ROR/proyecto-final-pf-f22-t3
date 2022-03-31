@@ -14,24 +14,25 @@ Una aplicación web en la que los usuarios podrán divertirse apostando sin perd
 
 
 ## Plan General
-Semana 1 (Estructura inicial, cuenta del usuario y diseño general)
-Semana 2 (Desarrollo del premio diario en coins)
-Semana 3 - 4 (Desarrollo juego de la nave)
-Semana 5 - 6 (Desarrollo juego de las minas)
-Semana 7 - 8 (Desarrollo juego carrera de caballos)
+Semana 1 (Estructura inicial, cuenta del usuario y diseño general)  
+Semana 2 (Desarrollo del premio diario en coins)  
+Semana 3 - 4 (Desarrollo juego de la nave)  
+Semana 5 - 6 (Desarrollo juego de las minas)  
+Semana 7 - 8 (Desarrollo juego carrera de caballos)  
 
 ## Requerimientos funcionales
 La aplicación debe contar con un registro de usuarios
 La aplicación debe contar con un mínimo de 3 minijuegos de apuestas
 
 ## Requerimientos no funcionales
-Implementación en Heroku
-Base de datos Postgres
-Diseño responsivo
+Implementación en Heroku  
+Base de datos Postgres  
+Diseño responsivo  
 
 ## Diseño del MVP
 
 Incluyan en [esta carpeta](/design) su propuesta de diseño
+![diseño](design/Frame.png)
 
 ## Recursos
 
