@@ -1,0 +1,104 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  background-color: #14507b;
+}
+
+* {
+  cursor: url("mano2.png"), auto;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Goldman";
+}
+
+.form {
+  width: 230px;
+  margin: 50px auto;
+  color: white;
+  font-family: "Goldman";
+}
+.form h2 {
+  text-align: center;
+}
+.form input[type="email"],
+.form input[type="password"] {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-family: "Goldman";
+}
+.form input[type="checkbox"] {
+  margin: 0px;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+.form .field {
+  margin-bottom: 10px;
+}
+.form a {
+  color: orange;
+}
+.form input[type="submit"] {
+  color: white;
+  border: none;
+  font-family: "Goldman";
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: #1ab33c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.form input[type="submit"]:hover {
+  background-color: #c3380a;
+}
+.remember {
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  padding: 10px;
+  color: white;
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  background: linear-gradient(
+    90deg,
+    #4e105a 8.63%,
+    rgba(61, 37, 170, 0.738) 117.26%
+  );
+}
+.navbar button {
+  color: white;
+  border: none;
+  font-family: "Goldman";
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: #dc3b0e;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
