@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: wallets
@@ -8,8 +10,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Wallet < ApplicationRecord
-  belongs_to :user
 
-  validates :coins, numericality: {greater_than_or_equal_to: 0}
+FactoryBot.define do
+  user = FactoryBot.create(:user)
+  factory :wallet do
+    coins { Faker::Number.decimal(l_digits: 3, r_digits: 2) }
+    user { user }
+  end
 end

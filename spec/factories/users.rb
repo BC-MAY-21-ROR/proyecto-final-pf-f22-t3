@@ -11,16 +11,13 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 
-  has_one :wallet
-  after_create :create_wallet
+FactoryBot.define do
+  password = Faker::Internet.password(min_length: 8)
 
-  def create_wallet
-    build_wallet(coins: 50.00).save
+  factory :user do
+    email { Faker::Internet.email }
+    password { password }
+    password_confirmation { password }
   end
 end
