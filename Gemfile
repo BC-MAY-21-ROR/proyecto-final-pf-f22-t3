@@ -59,6 +59,7 @@ group :development, :test do
   gem 'faker'
   gem "rubycritic", require: false
   gem 'rubycritic-small-badge', require: false
+  gem 'sandi_meter', require: false
 end
 
 group :development do

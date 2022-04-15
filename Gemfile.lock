@@ -138,6 +138,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json (2.6.1)
     kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -151,6 +152,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    mixlib-cli (2.1.8)
     msgpack (1.4.5)
     net-imap (0.2.3)
       digest
@@ -274,6 +276,10 @@ GEM
     rubycritic-small-badge (0.2.1)
       repo-small-badge (~> 0.2.7)
     rubyzip (2.3.2)
+    sandi_meter (1.2.0)
+      json
+      launchy
+      mixlib-cli
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -349,6 +355,7 @@ DEPENDENCIES
   rubocop-rails
   rubycritic
   rubycritic-small-badge
+  sandi_meter
   sprockets-rails
   stimulus-rails
   turbo-rails
