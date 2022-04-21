@@ -15,158 +15,167 @@
  */
 
 body {
-  background-color: #1F618D;
-  background-image: url('fondo2.png');
+	background-color: #1F618D;
+	background-image: url('fondo2.png');
 }
 
-h2{
-  margin-bottom: 20px;
+h2 {
+	margin-bottom: 20px;
 }
 
 * {
-  color: white;
-  /* cursor: url("mano2.png"), auto; */
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: "Goldman";
+	box-sizing: border-box;
+	color: white;
+	font-family: "Goldman";
+	margin: 0px;
+	padding: 0px;
 }
 
 .form {
-  width: 230px;
-  margin: 50px auto;
-  color: white;
-  font-family: "Goldman";
-}
-.form h2 {
-  text-align: center;
-}
-.form input[type="email"],
-.form input[type="password"] {
-  width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  font-family: "Goldman";
-  color: black;
-}
-.form input[type="checkbox"] {
-  margin: 0px;
-  margin-right: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-}
-.form .field {
-  margin-bottom: 10px;
-}
-.form a {
-  color: orange;
-}
-.btn {
-  border: none;
-  font-family: "Goldman";
-  padding: 10px 20px;
-  background-color: #29c34a;
-  border-bottom: 5px solid #13822b;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 15px;
-}
-.btn:hover{
-  background-color: #13822b;
+	color: white;
+	font-family: "Goldman";
+	margin: 50px auto;
+	width: 230px;
 }
 
-.btn-red{
-  background-color: #E74C3C;
-  border-bottom: 5px solid #B03A2E;
+.form h2 {
+	text-align: center;
 }
-.btn-red:hover{
-  background-color: #B03A2E;
+
+.form input[type="email"],
+.form input[type="password"] {
+	border: none;
+	border-radius: 5px;
+	color: black;
+	font-family: "Goldman";
+	height: 30px;
+	outline: none;
+	width: 100%;
+}
+
+.form input[type="checkbox"] {
+	border: none;
+	border-radius: 5px;
+	height: 30px;
+	margin: 0px;
+	margin-right: 5px;
+	outline: none;
+	width: 30px;
+}
+
+.form .field {
+	margin-bottom: 10px;
+}
+
+.form a {
+	color: orange;
+}
+
+.btn {
+	background-color: #29c34a;
+	border: none;
+	border-bottom: 5px solid #13822b;
+	border-radius: 10px;
+	cursor: pointer;
+	font-family: "Goldman";
+	font-size: 15px;
+	padding: 10px 20px;
+}
+
+.btn:hover {
+	background-color: #13822b;
+}
+
+.btn-red {
+	background-color: #E74C3C;
+	border-bottom: 5px solid #B03A2E;
+}
+
+.btn-red:hover {
+	background-color: #B03A2E;
 }
 
 .remember {
-  display: flex;
-  align-items: center;
+	align-items: center;
+	display: flex;
 }
 
 .navbar {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(
-    90deg,
-    #4e105a 8.63%,
-    rgb(35, 20, 103) 117.26%
-  );
+	background: linear-gradient(
+ 90deg,
+ #4e105a 8.63%,
+ rgb(35, 20, 103) 117.26%
+ );
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
 }
 
-.balance{
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
+.balance {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+	padding: 10px;
 }
 
-.balance img{
-  width: 40px;
+.balance img {
+	width: 40px;
 }
 
 .w100 {
-  width: 100%;
-}
-.center{
-  text-align: center;
+	width: 100%;
 }
 
-.container{
-  padding: 0px 30px;
+.center {
+	text-align: center;
 }
 
-.minigames{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+.container {
+	padding: 0px 30px;
 }
 
-.minigames div{
-  border-radius: 10px;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 3px 10px -3px white;
+.minigames {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
 }
 
-.minigames div:hover{
-  top: -5px;
+.minigames div {
+	align-items: center;
+	border-radius: 10px;
+	box-shadow: 0px 3px 10px -3px white;
+	display: flex;
+	height: 200px;
+	justify-content: center;
+	overflow: hidden;
+	position: relative;
+	width: 300px;
 }
 
-.minigames div img{
-  width: 100%;
-  filter: brightness(0.7);
+.minigames div:hover {
+	top: -5px;
 }
 
-.minigames div p{
-  position: absolute;
-  font-size: 30px;
-  text-shadow: 1px 1px 1px black, -1px -1px 1px black;
+.minigames div img {
+	filter: brightness(0.7);
+	width: 100%;
 }
 
-.reward{
-  display: flex;
-  align-items: center;
-  padding: 2px 20px;
+.minigames div p {
+	font-size: 30px;
+	position: absolute;
+	text-shadow: 1px 1px 1px black, -1px -1px 1px black;
 }
-.reward img{
-  margin-left: 10px;
-  width: 40px;
+
+.reward {
+	align-items: center;
+	display: flex;
+	padding: 2px 20px;
+}
+
+.reward img {
+	margin-left: 10px;
+	width: 40px;
 }
