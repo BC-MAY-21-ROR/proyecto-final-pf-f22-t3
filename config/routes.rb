@@ -6,4 +6,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "/slotmachine", to: "minigames#slotmachine_show"
+  get "/horsesrace", to: "minigames#horsesrace_show"
+  get "/mines", to: "minigames#mines_show"
+  get "/spaceship", to: "minigames#spaceship_show"
 end

@@ -15,11 +15,17 @@
  */
 
 body {
-  background-color: #14507b;
+  background-color: #1F618D;
+  background-image: url('fondo2.png');
+}
+
+h2{
+  margin-bottom: 20px;
 }
 
 * {
-  cursor: url("mano2.png"), auto;
+  color: white;
+  /* cursor: url("mano2.png"), auto; */
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -43,6 +49,7 @@ body {
   border: none;
   outline: none;
   font-family: "Goldman";
+  color: black;
 }
 .form input[type="checkbox"] {
   margin: 0px;
@@ -59,20 +66,28 @@ body {
 .form a {
   color: orange;
 }
-.form input[type="submit"] {
-  color: white;
+.btn {
   border: none;
   font-family: "Goldman";
-  width: 100%;
-  height: 30px;
-  margin-bottom: 10px;
-  background-color: #1ab33c;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #29c34a;
+  border-bottom: 5px solid #13822b;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
 }
-.form input[type="submit"]:hover {
-  background-color: #c3380a;
+.btn:hover{
+  background-color: #13822b;
 }
+
+.btn-red{
+  background-color: #E74C3C;
+  border-bottom: 5px solid #B03A2E;
+}
+.btn-red:hover{
+  background-color: #B03A2E;
+}
+
 .remember {
   display: flex;
   align-items: center;
@@ -80,25 +95,78 @@ body {
 
 .navbar {
   padding: 10px;
-  color: white;
   display: flex;
-  margin-bottom: 30px;
   justify-content: space-between;
   background: linear-gradient(
     90deg,
     #4e105a 8.63%,
-    rgba(61, 37, 170, 0.738) 117.26%
+    rgb(35, 20, 103) 117.26%
   );
 }
-.navbar button {
-  color: white;
-  border: none;
-  font-family: "Goldman";
-  cursor: pointer;
-  width: 100px;
-  height: 30px;
-  margin-bottom: 10px;
-  background-color: #dc3b0e;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+
+.balance{
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.balance img{
+  width: 40px;
+}
+
+.w100 {
+  width: 100%;
+}
+.center{
+  text-align: center;
+}
+
+.container{
+  padding: 0px 30px;
+}
+
+.minigames{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.minigames div{
+  border-radius: 10px;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 10px -3px white;
+}
+
+.minigames div:hover{
+  top: -5px;
+}
+
+.minigames div img{
+  width: 100%;
+  filter: brightness(0.7);
+}
+
+.minigames div p{
+  position: absolute;
+  font-size: 30px;
+  text-shadow: 1px 1px 1px black, -1px -1px 1px black;
+}
+
+.reward{
+  display: flex;
+  align-items: center;
+  padding: 2px 20px;
+}
+.reward img{
+  margin-left: 10px;
+  width: 40px;
 }
