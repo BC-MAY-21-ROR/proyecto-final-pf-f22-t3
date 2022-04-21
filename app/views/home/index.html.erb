@@ -1,3 +1,38 @@
-<h1>Welcome</h1>
-<p>Play now!</p>
-<h2>Your balance is: <%= number_to_currency(current_user.wallet.coins) %> BrightCoins</h2>
+<h1 class="balance">
+  <%= image_tag "coin2.gif" %>
+  <p>
+    <%= current_user.wallet.coins %>
+  </p>
+</h1>
+<button class="btn reward">
+  Get your daily reward!
+  <%= image_tag "coin2.gif" %>
+</button>
+<h2 class="center">Play now!</h2>
+<div class="minigames">
+  <a href="/slotmachine">
+    <div>
+      <%= image_tag "slotmachine.png" %>
+      <p>Slot Machine</p>
+    </div>
+  </a>
+  <a href="/horsesrace">
+    <div>
+      <%= image_tag "horsesrace.png" %>
+      <p>Horses Race</p>
+    </div>
+  </a>
+  <a href="/mines">
+    <div>
+      <%= image_tag "mines.png" %>
+      <p>Mines</p>
+    </div>
+  </a>
+  <a href="/spaceship">
+    <div>
+      <%= image_tag "spaceship.png" %>
+      <p>Space Ship</p>
+    </div>
+  </a>
+</div>
+<%# number_to_currency %>
