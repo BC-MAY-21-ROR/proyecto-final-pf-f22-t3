@@ -5,7 +5,7 @@ describe User do
     @user = create(:user)
   end
 
-  it "is valid with email, password and password confirmation" do
+  it "is valid with name, email, password and password confirmation" do
     expect(@user).to be_valid
   end
 

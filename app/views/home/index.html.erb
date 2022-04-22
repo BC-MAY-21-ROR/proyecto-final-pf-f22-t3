@@ -4,11 +4,15 @@
     <%= current_user.wallet.coins %>
   </p>
 </h1>
-<button class="btn reward">
-  Get your daily reward!
-  <%= image_tag "coin2.gif" %>
-</button>
-<h2 class="center">Play now!</h2>
+<% if Date.today != current_user.last_day.to_date %>
+  <a href="/getreward">
+    <button class="btn reward">
+      Get your daily reward!
+      <%= image_tag "coin2.gif" %>
+    </button>
+  </a>
+<% end %>
+<h2 class="center">Play now! <%= current_user.name %></h2>
 <div class="minigames">
   <a href="/slotmachine">
     <div>
