@@ -1,1 +1,106 @@
 <h1>Slot Machine</h1>
+
+<div class="slot_machine">
+      <div class="barra">
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/bc.jpg" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+      </div>
+      <div class="barra">
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/bc.jpg" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+
+        <div><%= image_tag "slot_machine/html.png" %></div>
+      </div>
+      <div class="barra">
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/bc.jpg" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/css.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/php.png" %></div>
+        <div><%= image_tag "slot_machine/python.png" %></div>
+        <div><%= image_tag "slot_machine/cpp.png" %></div>
+        <div><%= image_tag "slot_machine/html.png" %></div>
+        <div><%= image_tag "slot_machine/ruby.png" %></div>
+        <div><%= image_tag "slot_machine/java.png" %></div>
+        
+        <div><%= image_tag "slot_machine/css.png" %></div>
+      </div>
+    </div>
+    <button id="btn" class="btn">Girar</button>
+    <h2 id="result"></h2>
+
+<script>
+  let barras = [...document.querySelectorAll(".barra")];
+
+  btn.onclick = () => {
+    fetch("/spin").then(res => res.json()).then(data => {
+      girar(data.result);
+    })
+  }
+
+  function girar(resultado) {
+    let promises = [];
+    barras.forEach((barra, i) => {
+      promises.push(new Promise((ok) => (barra.onanimationend = ok)));
+      barra.classList.remove("girarclass");
+      barra.offsetWidth;
+      barra.classList.add("girarclass");
+      barra.style.animationIterationCount = 1 + resultado[i] / 20;
+    });
+
+    result.className = "";
+    result.textContent = "";
+    Promise.all(promises).then(() => {
+      result.className = "animate__animated animate__bounceIn";
+      result.textContent = "Ganaste 30 coins";
+    });
+  }
+</script>
