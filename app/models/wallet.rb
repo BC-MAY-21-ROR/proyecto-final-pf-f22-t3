@@ -14,4 +14,12 @@ class Wallet < ApplicationRecord
   belongs_to :user
 
   validates :coins, numericality: { greater_than_or_equal_to: 0 }
+
+  def add(amount)
+    update_attribute(:coins, coins+amount)
+  end
+
+  def remove(amount)
+    update_attribute(:coins, coins-amount)
+  end
 end

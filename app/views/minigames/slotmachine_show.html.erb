@@ -69,7 +69,7 @@
         <div><%= image_tag "slot_machine/cpp.png" %></div>
         <div><%= image_tag "slot_machine/html.png" %></div>
         <div><%= image_tag "slot_machine/ruby.png" %></div>
-        <div><%= image_tag "slot_machine/java.png" %></div>
+        <div><%= image_tag "slot_machine/javascript.png" %></div>
         
         <div><%= image_tag "slot_machine/css.png" %></div>
       </div>
@@ -81,26 +81,28 @@
   let barras = [...document.querySelectorAll(".barra")];
 
   btn.onclick = () => {
+    btn.disabled = true;
     fetch("/spin").then(res => res.json()).then(data => {
-      girar(data.result);
+      girar(data.rands, data.price);
     })
   }
 
-  function girar(resultado) {
+  function girar(rands, price) {
     let promises = [];
     barras.forEach((barra, i) => {
       promises.push(new Promise((ok) => (barra.onanimationend = ok)));
       barra.classList.remove("girarclass");
       barra.offsetWidth;
       barra.classList.add("girarclass");
-      barra.style.animationIterationCount = 1 + resultado[i] / 20;
+      barra.style.animationIterationCount = 1 + rands[i] / 20;
     });
 
     result.className = "";
     result.textContent = "";
     Promise.all(promises).then(() => {
       result.className = "animate__animated animate__bounceIn";
-      result.textContent = "Ganaste 30 coins";
+      result.textContent =`Ganaste ${price} coins`;
+      btn.disabled = false;
     });
   }
 </script>
