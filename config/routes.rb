@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "/horsesrace", to: "minigames#horsesrace_show"
   get "/mines", to: "minigames#mines_show"
   get "/spaceship", to: "minigames#spaceship_show"
+
+  get "/getreward", to: "home#get_reward"
 end
