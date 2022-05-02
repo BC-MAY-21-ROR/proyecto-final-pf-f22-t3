@@ -1,21 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
 body {
-	background-color: #1F618D;
 	background-image: url('fondo2.png');
 }
 
@@ -42,30 +25,21 @@ h2 {
 	text-align: center;
 }
 
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"] {
+input {
 	border: none;
 	border-radius: 5px;
 	color: black;
-	font-family: "Goldman";
 	height: 30px;
 	outline: none;
 	width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.form input[type="checkbox"] {
-	border: none;
-	border-radius: 5px;
-	height: 30px;
-	margin: 0px;
+input[type="checkbox"] {
 	margin-right: 5px;
-	outline: none;
 	width: 30px;
-}
-
-.form .field {
-	margin-bottom: 10px;
 }
 
 .form a {
@@ -78,12 +52,17 @@ h2 {
 	border-bottom: 5px solid #13822b;
 	border-radius: 10px;
 	cursor: pointer;
-	font-family: "Goldman";
 	font-size: 15px;
 	padding: 10px 20px;
 }
 
-.btn:hover {
+.btn:disabled{
+  cursor: auto;
+	background-color: #A6ACAF;
+	border-bottom-color: #626567;
+}
+
+.btn:enabled:hover {
 	background-color: #13822b;
 }
 
@@ -92,7 +71,7 @@ h2 {
 	border-bottom: 5px solid #B03A2E;
 }
 
-.btn-red:hover {
+.btn-red:enabled:hover {
 	background-color: #B03A2E;
 }
 

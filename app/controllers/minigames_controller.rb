@@ -7,6 +7,7 @@ $reel3 = [0, 0, 1, 5, 1, 2, 8, 2, 6, 4, 7, 0, 3, 6, 2, 3, 7, 1, 4, 5]
 
 class MinigamesController < ApplicationController
   def spin
+    return if current_user.wallet.coins <= 0
     rands = 3.times.map { rand(20) }
     result = [$reel1[rands[0]], $reel2[rands[1]], $reel3[rands[2]] ]
     count = result.tally
@@ -23,5 +24,10 @@ class MinigamesController < ApplicationController
 
   
     render json: {rands: rands, price: price}
+  end
+
+  def cheat
+    current_user.wallet.add 5000
+    redirect_to root_path
   end
 end
