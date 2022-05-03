@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!
   def index
-    puts current_user.last_day.to_date
+    # puts current_user.last_day.to_date
   end
 
   def get_reward

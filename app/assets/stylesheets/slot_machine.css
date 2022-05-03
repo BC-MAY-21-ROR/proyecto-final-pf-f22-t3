@@ -1,0 +1,36 @@
+.slot_machine{
+  border: 5px outset red;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 200px;
+  overflow: hidden;
+}
+
+@keyframes girar {
+  100% {
+    transform: translateY(-4000px);
+  }
+}
+
+.girarclass {
+  animation: girar 1s linear infinite forwards;
+}
+
+.barra{
+  background-color: white;
+}
+
+.barra div {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.barra div img {
+  max-width: 150px;
+  width: 100%;
+}

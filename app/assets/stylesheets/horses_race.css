@@ -1,0 +1,89 @@
+.horses-race {
+  display: flex;
+  height: 260px;
+  width: 100%;
+}
+
+.start{
+  background-color: orange;
+  height: 100%;
+  min-width: 100px;
+}
+
+.track{
+  background-color: green;
+  border-left: 5px dashed;
+  border-right: 5px dashed;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#announcement{
+  text-align: center;
+}
+
+#horseImg{
+  display: none;
+}
+
+canvas{
+  background-color: green;
+  width: 100%;
+}
+
+.horse {
+  left: calc(0% - 100px);
+  position: absolute;
+  transition: 2s linear;
+  width: 100px;
+}
+
+.horse:nth-child(1){ top: 0px; }
+.horse:nth-child(2){ top: 40px; }
+.horse:nth-child(3){ top: 80px; }
+.horse:nth-child(4){ top: 120px; }
+.horse:nth-child(5){ top: 160px; }
+
+.info{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.bet #horseSelection{
+  display: flex;
+  font-size: 25px;
+  gap: 3px;
+}
+
+.bet #horseSelection div{
+  border-radius: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+  text-align: center;
+  width: 50px;
+}
+
+.selected {
+  background-color: white;
+  color: black;
+}
+
+.bets{
+  border-collapse: collapse;
+  height: min-content;
+}
+
+.bets th, .bets td{
+  max-width: 90px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.green { color: green; }
+.red { color: red; }
