@@ -1,200 +1,157 @@
 body {
-	background-image: url('fondo2.png');
+  background-image: url('fondo2.png');
 }
 
 h2 {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 * {
-	box-sizing: border-box;
-	color: white;
-	font-family: "Goldman";
-	margin: 0px;
-	padding: 0px;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Goldman";
+  margin: 0px;
+  padding: 0px;
 }
 
 .form {
-	color: white;
-	font-family: "Goldman";
-	margin: 50px auto;
-	width: 230px;
+  color: white;
+  font-family: "Goldman";
+  margin: 50px auto;
+  width: 230px;
 }
 
 .form h2 {
-	text-align: center;
+  text-align: center;
 }
 
 input {
-	border: none;
-	border-radius: 5px;
-	color: black;
-	height: 30px;
-	outline: none;
-	width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  height: 30px;
+  outline: none;
+  width: 100%;
   padding: 5px;
   margin-bottom: 10px;
   text-align: center;
 }
 
 input[type="checkbox"] {
-	margin-right: 5px;
-	width: 30px;
+  margin-right: 5px;
+  width: 30px;
 }
 
 .form a {
-	color: orange;
+  color: orange;
 }
 
 .btn {
-	background-color: #29c34a;
-	border: none;
-	border-bottom: 5px solid #13822b;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 15px;
-	padding: 10px 20px;
+  background-color: #29c34a;
+  border: none;
+  border-bottom: 5px solid #13822b;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px 20px;
 }
 
 .btn:disabled{
   cursor: auto;
-	background-color: #A6ACAF;
-	border-bottom-color: #626567;
+  background-color: #A6ACAF;
+  border-bottom-color: #626567;
 }
 
 .btn:enabled:hover {
-	background-color: #13822b;
+  background-color: #13822b;
 }
 
 .btn-red {
-	background-color: #E74C3C;
-	border-bottom: 5px solid #B03A2E;
+  background-color: #E74C3C;
+  border-bottom: 5px solid #B03A2E;
 }
 
 .btn-red:enabled:hover {
-	background-color: #B03A2E;
+  background-color: #B03A2E;
 }
 
 .remember {
-	align-items: center;
-	display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .navbar {
-	background: linear-gradient(
- 90deg,
- #4e105a 8.63%,
- rgb(35, 20, 103) 117.26%
- );
-	display: flex;
-	justify-content: space-between;
-	padding: 10px;
-}
-
-.balance {
-	align-items: center;
-	display: flex;
-	gap: 10px;
-	justify-content: flex-end;
-	padding: 10px;
-}
-
-.balance img {
-	width: 40px;
-}
-
-.w100 {
-	width: 100%;
-}
-
-.center {
-	text-align: center;
-}
-
-.container {
-	padding: 0px 30px;
-}
-
-.minigames {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
-}
-
-.minigames div {
-	align-items: center;
-	border-radius: 10px;
-	box-shadow: 0px 3px 10px -3px white;
-	display: flex;
-	height: 200px;
-	justify-content: center;
-	overflow: hidden;
-	position: relative;
-	width: 300px;
-}
-
-.minigames div:hover {
-	top: -5px;
-}
-
-.minigames div img {
-	filter: brightness(0.7);
-	width: 100%;
-}
-
-.minigames div p {
-	font-size: 30px;
-	position: absolute;
-	text-shadow: 1px 1px 1px black, -1px -1px 1px black;
-}
-
-.reward {
-	align-items: center;
-	display: flex;
-	padding: 2px 20px;
-}
-
-.reward img {
-	margin-left: 10px;
-	width: 40px;
-}
-
-
-/* Slot Machine */
-.slot_machine{
-  border: 5px outset red;
-  height: 200px;
-  overflow: hidden;
-  display: grid;
-  gap: 5px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@keyframes girar {
-  100% {
-    transform: translateY(-4000px);
-  }
-}
-
-.girarclass {
-  animation: girar 1s linear infinite forwards;
-}
-
-.barra{
-  background-color: white;
-}
-
-.barra div {
-  box-sizing: border-box;
-  height: 200px;
-	display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(90deg,#4e105a 8.63%,rgb(35, 20, 103) 117.26%);
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
 }
 
-.barra div img {
-  max-width: 150px;
+.balance {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.balance img {
+  width: 40px;
+}
+
+.w100 {
   width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.container {
+  padding: 0px 30px;
+}
+
+.minigames {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.minigames div {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 3px 10px -3px white;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+}
+
+.minigames div:hover {
+  top: -5px;
+}
+
+.minigames div img {
+  filter: brightness(0.7);
+  width: 100%;
+}
+
+.minigames div p {
+  font-size: 30px;
+  position: absolute;
+  text-shadow: 1px 1px 1px black, -1px -1px 1px black;
+}
+
+.reward {
+  align-items: center;
+  display: flex;
+  padding: 2px 20px;
+}
+
+.reward img {
+  margin-left: 10px;
+  width: 40px;
 }
