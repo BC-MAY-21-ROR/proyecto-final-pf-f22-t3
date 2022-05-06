@@ -1,0 +1,60 @@
+.space {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(bg.gif);
+}
+
+img{
+  width: 100px;
+}
+
+#announcement{
+  text-align: center;
+}
+
+.info{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.bets{
+  border-collapse: collapse;
+  height: min-content;
+  background-color: black;
+}
+
+.bets th, .bets td{
+  text-align: center;
+  min-width: 90px;
+}
+
+.green { color: green; }
+.red { color: red; }
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display: inline;
+}
+
+#btnLeft{
+  height: min-content;
+  align-self: center;
+}
+
+#ship{
+  position: relative;
+  animation: move 2s ease-in-out infinite alternate;
+}
+
+@keyframes move {
+  from {left: -50px;}
+  to {left: 50px;}
+}

@@ -18,25 +18,13 @@ btnBet.onclick = () => {
   btnBet.disabled = true;
 };
 
-window.channel = window.consumer.subscriptions.create("HorsesRaceChannel", {
+const channel = window.consumer.subscriptions.create("HorsesRaceChannel", {
   connected() {
     console.log("Hello");
   },
 
-  received(data) {
-    if (data.type == "info") {
-      updateBets(data.bets);
-      if (data.phase == "running") running();
-      if (data.phase == "raceEnd") raceEnd(data.winner);
-      if (data.phase == "betsTime") announcement.textContent = `BetsTime!`;
-    }
-
-    if (data.type == "chat") chat(data.msg);
-    if (data.type == "moveHorses") moveHorses(data.horses);
-    if (data.type == "raceEnd") raceEnd(data.winner);
-    if (data.type == "starting") starting(data.seconds);
-    if (data.type == "updateBets") updateBets(data.bets);
-    if (data.type == "reset") reset();
+  received(msg) {
+    actions[msg.type](msg.data);
   },
 });
 
@@ -44,19 +32,45 @@ window.channel = window.consumer.subscriptions.create("HorsesRaceChannel", {
 //   messages.insertAdjacentHTML("afterbegin", `<p>${msg}</p>`);
 // }
 
-function updateBets(bets) {
-  betsTable.innerHTML = bets
-    .map(
-      (bet) =>
-        `<tr>
-          <td>${bet.user_name}</td>
-          <td>${bet.num}</td>
-          <td>${bet.amount}</td>
-          ${format(bet.result)}
-        </tr>`
-    )
-    .join("");
-}
+const actions = {
+  info({ phase, bets, winner }) {
+    actions.updateBets(bets);
+    actions[phase](winner);
+  },
+  betsTime() {
+    announcement.textContent = `Bets Time!`;
+  },
+  updateHorses(horses) {
+    horses.forEach(
+      (horse, i) =>
+        (horsesImgs[i].style.left = `calc(${horse.pos / 10}% - 100px)`)
+    );
+  },
+  gameOver(winner) {
+    btnBet.disabled = true;
+    announcement.textContent = `Winner is: ${winner}`;
+  },
+  running() {
+    btnBet.disabled = true;
+    announcement.textContent = "Running";
+  },
+  starting(seconds) {
+    announcement.textContent = `Starting: ${seconds}`;
+    if (seconds == 0) actions.running();
+  },
+  updateBets(bets) {
+    betsTable.innerHTML = bets.map(createBetRow).join("");
+  },
+  reset() {
+    betsTable.innerHTML = "";
+    announcement.textContent = `Bets Time!`;
+    horsesImgs.forEach((horse) => (horse.style.left = "calc(0% - 100px)"));
+    btnBet.disabled = false;
+  },
+  updateCoins(coins) {
+    updateCoins(coins);
+  },
+};
 
 function format(result) {
   if (!result) return `<td>---</td>`;
@@ -64,32 +78,13 @@ function format(result) {
   return `<td class="red">${result}</td>`;
 }
 
-function starting(seconds) {
-  announcement.textContent = `Starting: ${seconds}`;
-  if (seconds == 0) running();
-}
-
-function running() {
-  btnBet.disabled = true;
-  announcement.textContent = "Running";
-}
-
-function raceEnd(winner) {
-  announcement.textContent = `Winner is: ${winner}`;
-}
-
-function moveHorses(horses) {
-  horses.forEach(
-    (horse, i) =>
-      (horsesImgs[i].style.left = `calc(${horse.pos / 10}% - 100px)`)
-  );
-}
-
-function reset() {
-  betsTable.innerHTML = "";
-  announcement.textContent = `Bet Time!`;
-  horsesImgs.forEach((horse) => (horse.style.left = "calc(0% - 100px)"));
-  btnBet.disabled = false;
+function createBetRow(bet) {
+  return `<tr>
+            <td>${bet.user_name}</td>
+            <td>${bet.num}</td>
+            <td>${bet.amount}</td>
+            ${format(bet.result)}
+          </tr>`;
 }
 
 // let messages = document.querySelector("#messages");

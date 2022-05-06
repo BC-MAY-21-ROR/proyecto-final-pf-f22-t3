@@ -1,1 +1,33 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "space_ship" %>
+<% end %>
 <h1>Space ship</h1>
+<h3 id="announcement">Bets Time!</h3>
+<div class="space">
+  <h1 id="payElem">x1.00</h1>
+  <%= image_tag 'ship3.gif', id: "ship" %>
+  <%= image_tag 'explosion.gif', id: "explosion", class:"hidden" %>
+</div>
+<div class="info">
+  <div class="bet">
+    <div>
+      <p>Amount: </p>
+      <input type="number" id="amountInput" step="10" value="10" min="10" max="<%= current_user.wallet.coins %>">
+    </div>
+    <button class="btn w100" id="btnBet">Bet!</button>
+  </div>
+  <button class="btn" id="btnLeft">Leave ship!</button>
+  <table class="bets" border="1">
+    <caption>Bets</caption>
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Bet</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="betsTable">
+    </tbody>
+  </table>
+</div>
+<%= javascript_import_module_tag "space_ship_channel" %>
