@@ -9,10 +9,10 @@ class HorsesRaceChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    $game1.addBet(current_user, method(:updateCoins), data["bet"]) if data["type"] == "bet"
+    $game1.add_bet(current_user, method(:update_coins), data["bet"]) if data["type"] == "bet"
   end
 
-  def updateCoins(coins)
+  def update_coins(coins)
     transmit({type: "updateCoins", data: coins})
   end
 

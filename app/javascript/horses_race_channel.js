@@ -80,7 +80,7 @@ function format(result) {
 
 function createBetRow(bet) {
   return `<tr>
-            <td>${bet.user_name}</td>
+            <td>${bet.user}</td>
             <td>${bet.num}</td>
             <td>${bet.amount}</td>
             ${format(bet.result)}

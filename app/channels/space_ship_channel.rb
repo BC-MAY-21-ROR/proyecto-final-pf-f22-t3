@@ -9,11 +9,11 @@ class SpaceShipChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    $game2.addBet(current_user, method(:updateCoins), data["bet"]) if data["type"] == "bet"
-    $game2.left(current_user, method(:updateCoins)) if data["type"] == "left"
+    $game2.add_bet(current_user, method(:update_coins), data["bet"]) if data["type"] == "bet"
+    $game2.left(current_user, method(:update_coins)) if data["type"] == "left"
   end
 
-  def updateCoins(coins)
+  def update_coins(coins)
     transmit({type: "updateCoins", data: coins})
   end
 

@@ -56,7 +56,7 @@ class SpaceShipGame
     end
   end
 
-  def addBet(user, updateCoins, bet)
+  def add_bet(user, update_coins, bet)
     return if @phase != "betsTime"
     return if @bets.any? {|b| b[:user].id == user.id }
     amount = bet["amount"].to_i
@@ -64,18 +64,18 @@ class SpaceShipGame
     user.wallet.remove amount
     @bets.push({user:, amount:, result: nil, left: false})
     emit("updateBets", get_bets)
-    updateCoins.call user.wallet.coins
+    update_coins.call user.wallet.coins
     starting if @bets.size == 1
   end
 
-  def left(user, updateCoins)
+  def left(user, update_coins)
     return if @phase != "flying"
     @bets.each {|b| 
       if b[:user].id == user.id
         return if b[:left]
         win = (b[:amount] * @pay).round(2)
         b[:user].wallet.add win
-        updateCoins.call b[:user].wallet.coins
+        update_coins.call b[:user].wallet.coins
         b[:result] = "x#{@pay} +#{win}"
         b[:left] = true
       end
