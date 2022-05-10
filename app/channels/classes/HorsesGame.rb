@@ -1,9 +1,5 @@
 require_relative './Horse.rb'
 
-def emit(data)
-  ActionCable.server.broadcast("horses_race", data)
-end
-
 def set_interval(delay)
   Thread.new do
     loop do
@@ -21,11 +17,18 @@ def set_timeout(delay)
   end
 end
 
-class Game
+# HorsesRaceGame Class
+class HorsesRaceGame
   def initialize
+    @name = "horses_race"
+    @winner = nil
     @phase = "betsTime"
     @bets = []
-    @horses = Array.new(5) {|i| Horse.new i+1}
+    @horses = Array.new(5) {|index| Horse.new index+1}
+  end
+
+  def emit(type, data = nil)
+    ActionCable.server.broadcast(@name, { type:, data: })
   end
   
   def starting
@@ -33,7 +36,7 @@ class Game
     
     seconds_timer = set_interval(1) do
       seconds -= 1
-      emit({type: "starting", seconds: seconds})
+      emit("starting", seconds)
       if seconds == 0
         start
         seconds_timer.kill
@@ -45,59 +48,66 @@ class Game
     @phase = "running"
     
     race_timer = set_interval(0.3) do
-      @horses.each {|h| h.step}
-      emit({type: "moveHorses", horses: @horses})
-
-      @horses.each {|h| 
-      if h.win?
-        game_over(h.num)
-        race_timer.kill
-      end
+      @horses.each {|horse| 
+        horse.step
+        next if not horse.win?
+        game_over(horse.num)
       }
+      emit("updateHorses", @horses)
+      race_timer.kill if @phase == "gameOver"
     end
   end
 
-  def addBet(user, bet)
-    return if @phase != "betsTime"
-    return if @bets.any? {|b| b[:user].id == user.id }
-    num = bet["num"].to_i
-    amount = bet["amount"].to_i
-    return if not num.between?(1,5)
-    return if not amount.between?(10, user.wallet.coins)
-    user.wallet.remove amount
+  def add_bet(user, update_coins, bet)
+    num, amount = bet.values_at("num", "amount").map(&:to_i)
+    return if not is_valid_bet?(user, num, amount)
+    wallet = user.wallet
+    wallet.remove amount
     @bets.push({user:, num:, amount:, result: nil})
-    emit({type: "updateBets", bets: get_bets})
+    emit("updateBets", get_bets)
     starting if @bets.size == 1
+    update_coins.call wallet.coins
+  end
+
+  def is_valid_bet?(user, num, amount)
+    return false if @phase != "betsTime"
+    return false if @bets.any? {|bet| bet[:user].id == user.id }
+    return false if not num.between?(1, 5)
+    return false if not amount.between?(10, user.wallet.coins)
+    return true
   end
   
   def get_bets
-    @bets.collect {|b| {user_name: b[:user].name, num: b[:num], amount: b[:amount], result: b[:result] } }
+    @bets.collect {|bet| {**bet, user: bet[:user].name} }
   end
 
   def info
-    {type: "info", bets: get_bets, phase: @phase, winner: @winner }
+    {type: "info", data: {bets: get_bets, phase: @phase, winner: @winner} }
   end
 
   def game_over(winner)
     @winner = winner
-    @phase = "raceEnd"
-    emit({type: "raceEnd", winner: winner})
-    set_timeout(10) {reset}
-    @bets.each {|b| 
-      if b[:num] == winner
-        b[:result] = b[:amount]*3
-        b[:user].wallet.add b[:result]
+    @phase = "gameOver"
+    emit("gameOver", winner)
+
+    @bets.each {|bet|
+      amount = bet[:amount]
+      if bet[:num] == winner
+        bet[:result] = amount*3
+        bet[:user].wallet.add b[:result]
       else
-        b[:result] = -b[:amount]
+        bet[:result] = -amount
       end
     }
-    emit({type: "updateBets", bets: get_bets})
+
+    emit("updateBets", get_bets)
+    set_timeout(10) {reset}
   end
 
   def reset
     @phase = "betsTime"
-    @horses.each {|h| h.reset}
+    @horses.each {|horse| horse.reset}
     @bets = []
-    emit({type: "reset"})
+    emit("reset")
   end
 end

@@ -92,11 +92,11 @@ input[type="checkbox"] {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  padding: 10px;
+  line-height: 0;
 }
 
 .balance img {
-  width: 40px;
+  width: 30px;
 }
 
 .w100 {

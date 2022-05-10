@@ -1,9 +1,3 @@
-<h1 class="balance">
-  <%= image_tag "coin2.gif" %>
-  <p>
-    <%= current_user.wallet.coins %>
-  </p>
-</h1>
 <% if Date.today != current_user.last_day.to_date %>
   <a href="/getreward">
     <button class="btn reward">

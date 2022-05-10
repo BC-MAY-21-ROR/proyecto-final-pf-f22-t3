@@ -1,4 +1,4 @@
-.slot_machine{
+.slot_machine {
   border: 5px outset red;
   display: grid;
   gap: 5px;
@@ -17,7 +17,7 @@
   animation: girar 1s linear infinite forwards;
 }
 
-.barra{
+.barra {
   background-color: white;
 }
 
