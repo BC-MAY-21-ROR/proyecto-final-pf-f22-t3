@@ -1,1 +1,38 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "mines" %>
+<% end %>
 <h1>Mines</h1>
+
+<div class="mines">
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+      <div class="card"><div></div><div></div></div>
+    </div>
+
+<div class="center">
+  <button id="btnStart" class="btn" disabled>Comenzar con $10</button>
+  <button id="btnLeave" class="btn" disabled>Retirarme</button>
+</div>
+
+<%= javascript_import_module_tag "mines_channel" %>
