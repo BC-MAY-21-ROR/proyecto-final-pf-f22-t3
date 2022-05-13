@@ -70,9 +70,10 @@ class SpaceShipGame
 
   def left(user, update_coins)
     return if @phase != "flying"
+    
     @bets.each {|b| 
       if b[:user].id == user.id
-        return if b[:left]
+        return false if b[:left]
         win = (b[:amount] * @pay).round(2)
         b[:user].wallet.add win
         update_coins.call b[:user].wallet.coins
@@ -80,6 +81,7 @@ class SpaceShipGame
         b[:left] = true
       end
     }
+
     emit("updateBets", get_bets)
   end
   
