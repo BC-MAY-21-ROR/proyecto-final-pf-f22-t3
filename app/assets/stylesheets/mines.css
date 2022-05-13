@@ -1,0 +1,34 @@
+.mines {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  height: 500px;
+}
+
+.card{
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+.card div {
+  backface-visibility: hidden;
+  background-color: #333;
+  border-radius: 10px;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.card div:last-child{
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  transform: rotateY(180deg);
+}
+
+.boom {
+  background-color: red !important;
+}
