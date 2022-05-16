@@ -1,13 +1,14 @@
 .horses-race {
   display: flex;
-  height: 260px;
+  height: 250px;
   width: 100%;
+  margin: 10px 0px;
 }
 
 .start{
   background-color: orange;
   height: 100%;
-  min-width: 100px;
+  min-width: 90px;
 }
 
 .track{
@@ -33,10 +34,10 @@ canvas{
 }
 
 .horse {
-  left: calc(0% - 100px);
+  left: calc(0% - 90px);
   position: absolute;
   transition: 2s linear;
-  width: 100px;
+  width: 90px;
 }
 
 .horse:nth-child(1){ top: 0px; }
@@ -52,18 +53,32 @@ canvas{
   margin-top: 20px;
 }
 
-.bet #horseSelection{
+#horseSelection{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 25px;
-  gap: 3px;
+  gap: 10px;
+  padding: 5px;
 }
 
-.bet #horseSelection div{
+#horseSelection div{
   border-radius: 10px;
   border: 1px solid white;
   cursor: pointer;
   text-align: center;
-  width: 50px;
+  width: 40px;
+}
+
+#bet{
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+input{
+  width: min-content
 }
 
 .selected {
@@ -71,9 +86,16 @@ canvas{
   color: black;
 }
 
-.bets{
+.bets {
+  font-size: 20px;
+  width: 100%;
+  background-color: black;
   border-collapse: collapse;
   height: min-content;
+}
+
+.bets thead{
+  border-color: yellow;
 }
 
 .bets th, .bets td{
@@ -85,5 +107,14 @@ canvas{
   width: 90px;
 }
 
-.green { color: green; }
-.red { color: red; }
+.green {
+  color: #2ECC71;
+}
+
+.red {
+  color: red;
+}
+
+.hidden {
+  display: none !important;
+}

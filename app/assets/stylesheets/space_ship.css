@@ -21,7 +21,6 @@ img {
   display: flex;
   justify-content: center;
   gap: 10px;
-  z-index: 999;
 }
 
 .bets {
