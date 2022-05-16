@@ -1,10 +1,8 @@
 <% if Date.today != current_user.last_day.to_date %>
-  <a href="/getreward">
-    <button class="btn reward">
-      Get your daily reward!
-      <%= image_tag "coin2.gif" %>
-    </button>
-  </a>
+  <button class="btn reward" onClick="location.href='/getreward'">
+    Get your daily reward!
+    <%= image_tag "coin2.gif" %>
+  </button>
 <% end %>
 <h2 class="center">Play now! <%= current_user.name %></h2>
 <div class="minigames">

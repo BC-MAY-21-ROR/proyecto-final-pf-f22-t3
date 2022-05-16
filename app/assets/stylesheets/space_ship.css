@@ -4,7 +4,9 @@
   display: flex;
   flex-direction: column;
   height: 300px;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  margin: 10px 0px;
 }
 
 img {
@@ -15,17 +17,23 @@ img {
   text-align: center;
 }
 
-.info {
+#bet{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: center;
+  gap: 10px;
+  z-index: 999;
 }
 
 .bets {
+  font-size: 20px;
+  width: 100%;
   background-color: black;
   border-collapse: collapse;
   height: min-content;
+}
+
+.bets thead{
+  border-color: yellow;
 }
 
 .bets th,
@@ -35,14 +43,15 @@ img {
 }
 
 .green {
-  color: green;
+  color: #2ECC71;
 }
+
 .red {
   color: red;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .show {
@@ -55,8 +64,11 @@ img {
 }
 
 #ship {
-  animation: move 2s ease-in-out infinite alternate;
   position: relative;
+}
+
+.move{
+  animation: move 2s ease-in-out infinite alternate;
 }
 
 @keyframes move {
