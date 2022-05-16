@@ -1,14 +1,27 @@
+function addActions(ele) {
+  ele.hide = () => ele.classList.add("hidden");
+  ele.show = () => ele.classList.remove("hidden");
+  ele.enable = () => (ele.disabled = false);
+  ele.disable = () => (ele.disabled = true);
+}
+
+addActions(bet);
+addActions(btnLeft);
+addActions(explosion);
+addActions(ship);
+
 btnBet.onclick = () => {
   channel.send({
     type: "bet",
     bet: { amount: amountInput.value },
   });
-  btnBet.disabled = true;
+  bet.hide();
+  btnLeft.show();
 };
 
 btnLeft.onclick = () => {
   channel.send({ type: "left" });
-  btnLeft.disabled = true;
+  btnLeft.disable();
 };
 
 const channel = window.consumer.subscriptions.create("SpaceShipChannel", {
@@ -27,21 +40,31 @@ const actions = {
     actions[phase]();
   },
   betsTime() {
+    payElem.textContent = "x1.00";
+    betsTable.innerHTML = "";
     announcement.textContent = `Bets Time!`;
-    btnLeft.disabled = true;
+    bet.show();
+    btnLeft.hide();
+    btnLeft.disable();
+    explosion.hide();
+    ship.show();
+    ship.classList.remove("move");
   },
   updatePayment(payment) {
     payElem.textContent = "x" + payment;
   },
   gameOver() {
     announcement.textContent = "Game over";
-    explosion.className = "show";
-    ship.className = "hidden";
-    btnLeft.disabled = true;
+    ship.hide();
+    explosion.show();
+    btnLeft.disable();
   },
   flying() {
-    btnBet.disabled = true;
-    btnLeft.disabled = false;
+    bet.hide();
+    btnLeft.show();
+    btnLeft.enable();
+    ship.show();
+    ship.classList.add("move");
     announcement.textContent = "Flying";
   },
   starting(seconds) {
@@ -52,13 +75,7 @@ const actions = {
     betsTable.innerHTML = bets.map(createBetRow).join("");
   },
   reset() {
-    payElem.textContent = "x1.00";
-    betsTable.innerHTML = "";
-    announcement.textContent = `Bets Time!`;
-    btnBet.disabled = false;
-    btnLeft.disabled = false;
-    explosion.className = "hidden";
-    ship.className = "show";
+    actions.betsTime();
   },
   updateCoins(coins) {
     amountInput.max = coins;
@@ -67,7 +84,7 @@ const actions = {
 };
 
 function format(result) {
-  if (!result) return `<td>---</td>`;
+  if (!result) return `<td></td>`;
   if (result < 0) return `<td class="red">${result}</td>`;
   return `<td class="green">${result}</td>`;
 }
