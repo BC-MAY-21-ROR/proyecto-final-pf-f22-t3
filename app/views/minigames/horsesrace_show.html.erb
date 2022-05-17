@@ -2,8 +2,15 @@
   <%= stylesheet_link_tag "horses_race" %>
 <% end %>
 <h1>Horses race</h1>
-<h3 id="announcement"></h3>
+<h2 id="announcement"></h2>
 <div class="horses-race">
+  <h1 id="horseSelection">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </h1>
   <div class="start"></div>
   <div class="track">
     <%= image_tag "horse.png", class: "horse" %>
@@ -13,37 +20,20 @@
     <%= image_tag "horse.png", class: "horse" %>
   </div>
 </div>
-<%# <input type="text" id="txt">
-<button id="btn">Enviar</button>
-<p id="messages"></p> %>
-<div class="info">
-  <div class="bet">
-    <p>Choose one horse: </p>
-    <div id="horseSelection">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-    </div>
-    <div>
-      <p>Amount: </p>
-      <input type="number" id="amountInput" step="10" value="10" min="10" max="<%= current_user.wallet.coins %>">
-    </div>
-    <button class="btn w100" id="btnBet">Bet!</button>
-  </div>
-  <table class="bets" border="1">
-    <caption>Bets</caption>
-    <thead>
-      <tr>
-        <th>Player</th>
-        <th>Horse</th>
-        <th>Bet</th>
-        <th>Result</th>
-      </tr>
-    </thead>
-    <tbody id="betsTable">
-    </tbody>
-  </table>
+<div id="bet" class="hidden">
+  <input type="number" id="amountInput" step="10" value="10" min="10" max="<%= current_user.wallet.coins %>">
+  <button class="btn" id="btnBet">Bet!</button>
 </div>
+<table class="bets" border="1">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Horse</th>
+      <th>Bet</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody id="betsTable">
+  </tbody>
+</table>
 <%= javascript_import_module_tag "horses_race_channel" %>

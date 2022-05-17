@@ -5,7 +5,7 @@ $game1 = HorsesRaceGame.new
 class HorsesRaceChannel < ApplicationCable::Channel
   def subscribed
     stream_from "horses_race"
-    transmit $game1.info
+    transmit $game1.info(current_user)
   end
 
   def receive(data)

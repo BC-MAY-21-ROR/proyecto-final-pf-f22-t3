@@ -81,8 +81,10 @@ class HorsesRaceGame
     @bets.collect {|bet| {**bet, user: bet[:user].name} }
   end
 
-  def info
-    {type: "info", data: {bets: get_bets, phase: @phase, winner: @winner} }
+  def info(user)
+    user_bet = @bets.find {|bet| bet[:user].id == user.id }
+    betted = user_bet ? user_bet[:num]: false
+    {type: "info", data: {bets: get_bets, phase: @phase, winner: @winner, betted:} }
   end
 
   def game_over(winner)
@@ -94,7 +96,7 @@ class HorsesRaceGame
       amount = bet[:amount]
       if bet[:num] == winner
         bet[:result] = amount*3
-        bet[:user].wallet.add b[:result]
+        bet[:user].wallet.add bet[:result]
       else
         bet[:result] = -amount
       end
