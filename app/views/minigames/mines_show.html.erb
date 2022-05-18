@@ -2,37 +2,111 @@
   <%= stylesheet_link_tag "mines" %>
 <% end %>
 <h1>Mines</h1>
-
+<p>Comienza la partida con $10, hay 4 minas</p>
 <div class="mines">
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-      <div class="card"><div></div><div></div></div>
-    </div>
-
-<div class="center">
-  <button id="btnStart" class="btn" disabled>Comenzar con $10</button>
-  <button id="btnLeave" class="btn" disabled>Retirarme</button>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="card">
+    <div></div>
+    <div></div>
+  </div>
 </div>
-
+<div class="center">
+  <button id="btnStart" class="btn hidden">Start!</button>
+  <div id="leaveContainer" class="hidden">
+    <button id="btnLeave" class="btn btn-blue">Leave and earn!</button>
+    <%= image_tag "coin.png" %>
+    <h2 id="txtPrize"></h2>
+  </div>
+</div>
 <%= javascript_import_module_tag "mines_channel" %>

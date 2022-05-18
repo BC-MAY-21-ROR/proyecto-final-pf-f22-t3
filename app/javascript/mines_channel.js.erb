@@ -1,0 +1,72 @@
+function addActions(ele) {
+  ele.hide = () => ele.classList.add("hidden");
+  ele.show = () => ele.classList.remove("hidden");
+  ele.enable = () => (ele.disabled = false);
+  ele.disable = () => (ele.disabled = true);
+}
+
+addActions(btnStart);
+addActions(btnLeave);
+addActions(leaveContainer);
+
+const cards = [...document.querySelectorAll(".card")];
+
+cards.forEach((card, num) => {
+  card.onclick = () => channel.send({ type: "flip", num });
+});
+
+btnStart.onclick = () => {
+  channel.send({ type: "start" });
+  btnStart.disable();
+};
+
+btnLeave.onclick = () => {
+  channel.send({ type: "leave" });
+  btnLeave.disable();
+};
+
+const channel = window.consumer.subscriptions.create("MinesChannel", {
+  connected() {
+    btnStart.show();
+    console.log("Hello");
+  },
+
+  received(msg) {
+    console.log(msg);
+    actions[msg.type](msg.data);
+  },
+});
+
+const actions = {
+  start(coins) {
+    cards.forEach((card) => (card.style.transform = "rotateY(0deg)"));
+    updateCoins(coins);
+    btnStart.hide();
+    leaveContainer.show();
+    btnLeave.enable();
+    txtPrize.textContent = 10;
+  },
+  flip({ back, num, prize }) {
+    txtPrize.textContent = prize;
+    let card = cards[num];
+    let backSide = card.querySelector("div:last-child");
+    backSide.textContent = back;
+    card.style.transform = "rotateY(180deg)";
+    if (back == "Boom") {
+      backSide.innerHTML = "<img src='<%= asset_path("bomb.png") %>' />";
+      btnLeave.disable();
+      setTimeout(actions.restart, 3000);
+      backSide.style.backgroundColor = "red";
+    } else backSide.style.backgroundColor = "green";
+  },
+  restart() {
+    cards.forEach((card) => (card.style.transform = "rotateY(0deg)"));
+    btnStart.show();
+    btnStart.enable();
+    leaveContainer.hide();
+  },
+  leave(coins) {
+    updateCoins(coins);
+    setTimeout(actions.restart, 3000);
+  },
+};
