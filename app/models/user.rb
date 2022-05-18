@@ -19,7 +19,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :wallet
+  has_one :wallet, dependent: :delete
   after_create :create_wallet
 
   def create_wallet
