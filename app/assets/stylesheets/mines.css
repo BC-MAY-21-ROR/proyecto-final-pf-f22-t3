@@ -3,6 +3,11 @@
   gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   height: 500px;
+  margin: 10px 0px;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .card{
@@ -29,6 +34,21 @@
   transform: rotateY(180deg);
 }
 
-.boom {
-  background-color: red !important;
+.card img{
+  width: 80px;
+}
+
+#btnLeave{
+  margin-right: 10px;
+}
+
+#leaveContainer{
+  display: flex;
+  justify-content: center;
+    align-items: center;
+}
+
+#leaveContainer img{
+  width: 20px;
+  height: 20px;
 }
