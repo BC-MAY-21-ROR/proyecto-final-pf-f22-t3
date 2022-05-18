@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_one :wallet, dependent: :delete
   after_create :create_wallet
 
+  has_one_attached :avatar
+
   def create_wallet
     build_wallet(coins: 50.00).save
   end
