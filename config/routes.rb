@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-
-  resources :users, only: [:show, :edit, :update]
-
+  
   get "/cheat", to: "minigames#cheat"
   get "/spin", to: "minigames#spin"
 
