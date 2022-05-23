@@ -3,4 +3,13 @@
 import "controllers";
 import "channels";
 
-window.updateCoins = (coins) => (TxtCoins.textContent = coins);
+audioCoins.volume = 0.2;
+
+window.updateCoins = (coins) => {
+  // let utterance = new SpeechSynthesisUtterance();
+  // utterance.text = "Hola Alan";
+  // utterance.voice = speechSynthesis.getVoices()[13]
+  // speechSynthesis.speak(utterance);
+  audioCoins.play();
+  TxtCoins.textContent = coins;
+};

@@ -5,6 +5,9 @@ function addActions(ele) {
   ele.disable = () => (ele.disabled = true);
 }
 
+cardFlip.volume = 0.2;
+boom.volume = 0.2;
+
 addActions(btnStart);
 addActions(btnLeave);
 addActions(leaveContainer);
@@ -47,12 +50,15 @@ const actions = {
     txtPrize.textContent = 10;
   },
   flip({ back, num, prize }) {
+    cardFlip.currentTime = 0;
+    cardFlip.play();
     txtPrize.textContent = prize;
     let card = cards[num];
     let backSide = card.querySelector("div:last-child");
     backSide.textContent = back;
     card.style.transform = "rotateY(180deg)";
     if (back == "Boom") {
+      boom.play();
       backSide.innerHTML = "<img src='<%= asset_path("bomb.png") %>' />";
       btnLeave.disable();
       setTimeout(actions.restart, 3000);

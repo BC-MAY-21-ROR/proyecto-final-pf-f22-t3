@@ -5,6 +5,10 @@ function addActions(ele) {
   ele.disable = () => (ele.disabled = true);
 }
 
+shot.volume = 0.2;
+gallop.volume = 0.2;
+fanfare.volume = 0.2;
+
 addActions(bet);
 
 let horsesImgs = [...document.querySelectorAll(".horse")];
@@ -64,18 +68,25 @@ const actions = {
     );
   },
   gameOver(winner) {
+    fanfare.play();
+    gallop.pause();
+    gallop.currentTime = 0;
     bet.hide();
     announcement.textContent = `Winner is: ${winner}`;
     horseSelection.style.pointerEvents = "none";
   },
   running() {
+    gallop.play();
     bet.hide();
     announcement.textContent = "Running";
     horseSelection.style.pointerEvents = "none";
   },
   starting(seconds) {
     announcement.textContent = `Starting: ${seconds}`;
-    if (seconds == 0) actions.running();
+    if (seconds == 0){
+      shot.play()
+      actions.running();
+    } 
   },
   updateBets(bets) {
     betsTable.innerHTML = bets.map(createBetRow).join("");
