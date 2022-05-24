@@ -76,9 +76,11 @@
 </div>
 <button id="btn" class="btn">Girar</button>
 <h2 id="result"></h2>
+<%= audio_tag "slotmachine.wav", id: "slotmachine" %>
 <script>
   let barras = [...document.querySelectorAll(".barra")];
 
+  slotmachine.volume = 0.2;
   btn.onclick = () => {
     btn.disabled = true;
     fetch("/spin").then(res => res.json()).then(data => {
@@ -88,6 +90,8 @@
 
   function girar(rands, price) {
     let promises = [];
+    slotmachine.currentTime = 0;
+    slotmachine.play();
     barras.forEach((barra, i) => {
       promises.push(new Promise((ok) => (barra.onanimationend = ok)));
       barra.classList.remove("girarclass");

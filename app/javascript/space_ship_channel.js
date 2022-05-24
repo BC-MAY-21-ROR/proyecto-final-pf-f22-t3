@@ -10,6 +10,9 @@ addActions(btnLeft);
 addActions(explosion);
 addActions(ship);
 
+spaceship.volume = 0.2;
+boom.volume = 0.2;
+
 btnBet.onclick = () => {
   channel.send({
     type: "bet",
@@ -54,12 +57,16 @@ const actions = {
     payElem.textContent = "x" + payment;
   },
   gameOver() {
+    spaceship.pause();
+    spaceship.currentTime = 0;
+    boom.play();
     announcement.textContent = "Game over";
     ship.hide();
     explosion.show();
     btnLeft.disable();
   },
   flying() {
+    spaceship.play();
     bet.hide();
     btnLeft.show();
     btnLeft.enable();
