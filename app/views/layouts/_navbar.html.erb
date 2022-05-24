@@ -1,19 +1,30 @@
 <div class="navbar">
   <%= audio_tag "coins.wav", id: "audioCoins" %>
   <a href="/">
-    <h1>BrightBets</h1>
+    <%= image_tag "logo.svg", class: "logo" %>
   </a>
-  <h1 class="balance">
-    <a href="/cheat">
-      <%= image_tag "coin2.gif" %>
-    </a>
-    <p id="TxtCoins">
-      <%= current_user.wallet.coins %>
-    </p>
-  </h1>
-  <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar, class: "avatar" %>
-  <% end %>
-  <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-blue" %>
-  <%= button_to "Log out", destroy_user_session_path, 'data-turbo': false, method: :delete, class: "btn btn-red"  %>
+
+  <div class="dropdown">
+    <div class="me">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: "avatar" %>
+      <% end %>
+      <%= current_user.name %>
+      <h3 class="balance">
+        <a href="/cheat">
+          <%= image_tag "coin2.gif" %>
+        </a>
+        <p id="TxtCoins">
+          <%= current_user.wallet.coins %>
+        </p>
+      </h5>
+    </div>
+
+    <div class="menu">
+      <%= link_to "Edit profile", edit_user_registration_path, class:"menu-link" %>
+      <%= button_to "Log out", destroy_user_session_path, 'data-turbo': false, method: :delete, class:"menu-link" %>
+    </div>
+  </div>
+
+  
 </div>
