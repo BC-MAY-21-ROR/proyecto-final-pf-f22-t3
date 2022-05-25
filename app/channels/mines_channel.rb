@@ -10,6 +10,7 @@ class MinesChannel < ApplicationCable::Channel
   end
 
   def start
+    return if current_user.wallet.coins < 10
     @cards = [
       "Boom",
       "Boom",
