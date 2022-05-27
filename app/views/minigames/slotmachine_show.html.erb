@@ -3,6 +3,7 @@
 <% end %>
 
 <h1>Slot Machine</h1>
+
 <div class="slot_machine">
   <div class="barra">
     <div><%= image_tag "slot_machine/javascript.png" %></div>
@@ -74,8 +75,151 @@
     <div><%= image_tag "slot_machine/css.png" %></div>
   </div>
 </div>
-<button id="btn" class="btn">Girar</button>
-<h2 id="result"></h2>
+<div class="center">
+  <button id="btn" class="btn">Spin for $5</button>
+  
+  <h2>
+  Prize:
+    <span id="result"></span>
+  </h2>
+</div>
+  
+  <table>
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/php.png" %>
+      <%= image_tag "slot_machine/php.png" %>
+    </td>
+    <td>$10</td>
+
+    <td>
+      <%= image_tag "slot_machine/php.png" %>
+      <%= image_tag "slot_machine/php.png" %>
+      <%= image_tag "slot_machine/php.png" %>
+    </td>
+    <td>$100</td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/html.png" %>
+      <%= image_tag "slot_machine/html.png" %>
+    </td>
+    <td>$10</td>
+
+    <td>
+      <%= image_tag "slot_machine/html.png" %>
+      <%= image_tag "slot_machine/html.png" %>
+      <%= image_tag "slot_machine/html.png" %>
+    </td>
+    <td>$100</td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/css.png" %>
+      <%= image_tag "slot_machine/css.png" %>
+    </td>
+    <td>$10</td>
+
+    <td>
+      <%= image_tag "slot_machine/css.png" %>
+      <%= image_tag "slot_machine/css.png" %>
+      <%= image_tag "slot_machine/css.png" %>
+    </td>
+    <td>$100</td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/python.png" %>
+      <%= image_tag "slot_machine/python.png" %>
+    </td>
+    <td>$30</td>
+
+    <td>
+      <%= image_tag "slot_machine/python.png" %>
+      <%= image_tag "slot_machine/python.png" %>
+      <%= image_tag "slot_machine/python.png" %>
+    </td>
+    <td>$300</td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/ruby.png" %>
+      <%= image_tag "slot_machine/ruby.png" %>
+    </td>
+    <td>$30</td>
+   
+    <td>
+      <%= image_tag "slot_machine/ruby.png" %>
+      <%= image_tag "slot_machine/ruby.png" %>
+      <%= image_tag "slot_machine/ruby.png" %>
+    </td>
+    <td>$300</td>
+  </tr>
+  
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/javascript.png" %>
+      <%= image_tag "slot_machine/javascript.png" %>
+    </td>
+    <td>$30</td>
+
+    <td>
+      <%= image_tag "slot_machine/javascript.png" %>
+      <%= image_tag "slot_machine/javascript.png" %>
+      <%= image_tag "slot_machine/javascript.png" %>
+    </td>
+    <td>$300</td>
+  </tr>
+  
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/java.png" %>
+      <%= image_tag "slot_machine/java.png" %>
+    </td>
+    <td>$30</td>
+
+    <td>
+      <%= image_tag "slot_machine/java.png" %>
+      <%= image_tag "slot_machine/java.png" %>
+      <%= image_tag "slot_machine/java.png" %>
+    </td>
+    <td>$300</td>
+  </tr>
+  
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/cpp.png" %>
+      <%= image_tag "slot_machine/cpp.png" %>
+    </td>
+    <td>$30</td>
+
+    <td>
+      <%= image_tag "slot_machine/cpp.png" %>
+      <%= image_tag "slot_machine/cpp.png" %>
+      <%= image_tag "slot_machine/cpp.png" %>
+    </td>
+    <td>$300</td>
+  </tr>
+  
+  <tr>
+    <td>
+      <%= image_tag "slot_machine/bc.jpg" %>
+      <%= image_tag "slot_machine/bc.jpg" %>
+    </td>
+    <td>$50</td>
+
+    <td>
+      <%= image_tag "slot_machine/bc.jpg" %>
+      <%= image_tag "slot_machine/bc.jpg" %>
+      <%= image_tag "slot_machine/bc.jpg" %>
+    </td>
+    <td>$3000</td>
+  </tr>
+</table>
 <%= audio_tag "slotmachine.wav", id: "slotmachine" %>
 <script>
   let barras = [...document.querySelectorAll(".barra")];
@@ -83,12 +227,13 @@
   slotmachine.volume = 0.2;
   btn.onclick = () => {
     btn.disabled = true;
+    TxtCoins.innerText = (TxtCoins.innerText-5).toFixed(1);
     fetch("/spin").then(res => res.json()).then(data => {
-      girar(data.rands, data.price);
+      girar(data.rands, data.prize, data.coins);
     }).catch(err => console.log("vete a tomar por saco no tienes coins"))
   }
 
-  function girar(rands, price) {
+  function girar(rands, prize, coins) {
     let promises = [];
     slotmachine.currentTime = 0;
     slotmachine.play();
@@ -103,8 +248,10 @@
     result.className = "";
     result.textContent = "";
     Promise.all(promises).then(() => {
+      updateCoins(coins);
       result.className = "animate__animated animate__bounceIn";
-      result.textContent =`Ganaste ${price} coins`;
+      result.textContent =`${prize} coins`;
+      if(prize == 0) result.textContent = "Nothing"
       btn.disabled = false;
     });
   }
